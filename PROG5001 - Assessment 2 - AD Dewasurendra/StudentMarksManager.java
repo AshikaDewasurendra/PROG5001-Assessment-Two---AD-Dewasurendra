@@ -30,11 +30,14 @@ class Student{
     this.total = (A1 + A2 + A3);
     }
 
-
-
-
-
-
-
 }
+
+public class StudentMarksManager{
+
+List<Student> students = new ArrayList<>();
+}
+
+
+
+
 
