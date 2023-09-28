@@ -73,6 +73,18 @@ public class StudentMarksManager{
         }
     
     }
+
+    public void printStudents(){
+    
+        for(Student s : students){
+        System.out.printf(s.lastName , s.firstName , s.studentID , s.A1 ,s.A2 ,s.A3 ,s.total);
+        }
+    
+    }
+
+
+
+
 }
 
 
