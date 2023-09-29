@@ -92,6 +92,41 @@ public class StudentMarksManager{
     
     }
 
+    public void sortStudents(){
+        int n = students.size();
+        for(int i=0;i<n-1;i++){
+            for(int j=0; j<n-i-1;j++){
+                if(students.get(j).total > students.get(j+1).total){
+                
+                Student temp = students.get(j);
+                students.set(j, students.get(j+1));
+                students.set(j+1,temp);
+                }
+            
+            }
+        
+        }
+    }
+    
+    public void printTomAndBottomStudents(){
+        
+        
+        sortStudents();
+        
+        for (int i = students.size() - 1; i >= students.size() - 5; i--) {
+            System.out.printf(students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
+        }
+    
+        for (int i = 0; i < 5; i++) {
+            System.out.printf( students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
+        }
+    
+    
+    }
+    
+    
+    
+    
     
 }
 
