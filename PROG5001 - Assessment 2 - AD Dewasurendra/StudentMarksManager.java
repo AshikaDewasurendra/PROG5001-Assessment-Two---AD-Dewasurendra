@@ -108,7 +108,7 @@ public class StudentMarksManager{
         }
     }
     
-    public void printTomAndBottomStudents(){
+    public void printTopAndBottomStudents(){
         
         
         sortStudents();
@@ -124,11 +124,95 @@ public class StudentMarksManager{
     
     }
     
+    public static void main(String[] args) throws IOException{
+    
+    StudentMarksManager manager = new StudentMarksManager();
+    
+    Scanner scanner = new Scanner(System.in);
+    String filename = null;
+    int file = 0;
+    
+    while(true){
+            System.out.println("Menu:");
+            System.out.print("1. Read a file" + (filename != null && file == 1 ? " (Current file: " + filename + ")" : ""));
+            System.out.print("\n2. Show all students with Total marks");
+            System.out.print("\n3. Show Students below the given threshold");
+            System.out.print("\n4. Show Top and Bottom students");
+            System.out.print("\n5. Exit");
+            System.out.print("\nEnter your choice: ");
+    
+    
+    try{
+    
+    int choice = scanner.nextInt();
+    
+    if(choice == 5){
+        return;
+    }
+    
+    if(choice !=1 && file==0){
+    
+        System.out.println("First read a file");
+          System.out.println();
+                    continue;
+    
+    }
+    switch(choice){
+    
+        case 1:
+            System.out.print("Enter the filename: ");
+            filename = (scanner.next()+".csv");
+            file = manager.readFromFile(filename);
+            break;
+        
+            case 2:
+                System.out.println();
+                System.out.println("All students with calculated Total marks;");
+                manager.printStudents();
+                break;
+                
+                
+                 case 3:
+                        
+                        System.out.print("Enter the threshold");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("That's not a valid number , Enter a valid threshold");
+                            System.out.print("Enter the threshold: ");
+                            scanner.next();
+                        }
+                        Double threshold = scanner.nextDouble();
+                        if (threshold < 0 || threshold > 40) {
+                            System.out.println("\nThe threshold must be in the range 0 - 30 !");
+                            break;
+                        }
+                        
+                        System.out.println();
+                        
+                        System.out.println("Students with total marks less than " + threshold + ";");
+                        manager.printStudentsBelowThreshold(threshold);
+                        break;               
+             case 4:
+                        System.out.println();
+                        manager.printTopAndBottomStudents();
+                        break;
+                    default:
+                  
+                        System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer");
+                scanner.nextLine(); 
+            }
+            System.out.println();
+    }
+    
+    }
+    
+    }
     
     
     
-    
-}
+
 
 
 
