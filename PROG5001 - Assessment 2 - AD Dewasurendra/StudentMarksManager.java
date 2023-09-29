@@ -82,9 +82,17 @@ public class StudentMarksManager{
     
     }
 
+    public void printStudentsBelowThreshold(double threshold){
+    
+    for(Student s: students){
+        if(s.total < threshold){
+            System.out.printf(s.lastName , s.firstName , s.studentID , s.A1,s.A2,s.A3,s.total);
+        }
+    }
+    
+    }
 
-
-
+    
 }
 
 

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=StudentMarksManager
+comment1.params=lastName\ firstName\ studentID\ A1\ A2\ A3
+comment1.target=Student(java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double,\ double)
+comment2.params=fileName
+comment2.target=int\ readFromFile(java.lang.String)
+comment3.params=
+comment3.target=void\ printStudents()
+numComments=4
