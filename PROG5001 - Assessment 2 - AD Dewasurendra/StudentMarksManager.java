@@ -75,7 +75,7 @@ public class StudentMarksManager{
     }
 
     public void printStudents(){
-    
+        System.out.printf("| %-25s | %12s | %10s | %9s | %9s | %9s | %9s | %7s | %n" , "Last Name" , "FirstName" , "Student ID" , "Assignment 01"  , "Assignment 02" , "Assignment 03" , "total");
         for(Student s : students){
         System.out.printf(s.lastName , s.firstName , s.studentID , s.A1 ,s.A2 ,s.A3 ,s.total);
         }
