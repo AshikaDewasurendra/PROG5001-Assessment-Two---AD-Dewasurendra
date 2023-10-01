@@ -52,12 +52,12 @@ public class StudentMarksManager{
                     }
         
             String[] parts = line.split(",");
-            String lastName = parts.length>0 ? parts[0] : "";
-            String firstName = parts.length>1 ? parts[1] : "";
-            String studentID = parts.length>2 ? parts[2] : "";
-            double A1 = parts.length > 3 && !parts[3].isEmpty() ? Double.parseDouble(parts[3]):0.0;
-            double A2 = parts.length > 4 && !parts[3].isEmpty() ? Double.parseDouble(parts[4]):0.0;
-            double A3 = parts.length > 5 && !parts[3].isEmpty() ? Double.parseDouble(parts[5]):0.0;
+            String lastName = parts.length > 0 ? parts[0] : "";
+            String firstName = parts.length > 1 ? parts[1] : "";
+            String studentID = parts.length > 2 ? parts[2] : "";
+            double A1 = parts.length > 3 && !parts[3].isEmpty() ? Double.parseDouble(parts[3]) : 0.0;
+            double A2 = parts.length > 4 && !parts[3].isEmpty() ? Double.parseDouble(parts[4]) : 0.0;
+            double A3 = parts.length > 5 && !parts[3].isEmpty() ? Double.parseDouble(parts[5]) : 0.0;
         
             students.add(new Student(lastName, firstName, studentID, A1, A2, A3));
             }
@@ -74,19 +74,25 @@ public class StudentMarksManager{
     
     }
 
-    public void printStudents(){
-        System.out.printf("| %-25s | %12s | %10s | %9s | %9s | %9s | %9s | %7s | %n" , "Last Name" , "FirstName" , "Student ID" , "Assignment 01"  , "Assignment 02" , "Assignment 03" , "total");
-        for(Student s : students){
-        System.out.printf(s.lastName , s.firstName , s.studentID , s.A1 ,s.A2 ,s.A3 ,s.total);
+    public void printStudents() {
+       
+        System.out.printf("| %-30s | %-20s | %-15s | %-15s | %-15s | %-15s | %-7s |%n", "Last Name", "First Name", "Student ID", "Assessment 01", "Assessment 02", "Assessment 03", "Total");
+        System.out.printf("+----------------------------------+---------------------------+-----------------+-----------------+-----------------+-----------------+---------+%n");
+  
+     
+        for (Student s : students) {
+            System.out.printf("| %-30s | %-20s | %-15s | %-15.2f | %-15.2f | %-15.2f | %-7.2f |%n", s.lastName, s.firstName, s.studentID, s.A1, s.A2, s.A3, s.total);
         }
-    
     }
 
     public void printStudentsBelowThreshold(double threshold){
     
+    System.out.printf("| %-30s | %-20s | %-15s | %-15s | %-15s | %-15s | %-7s |%n", "Last Name", "First Name", "Student ID", "Assessment 01", "Assessment 02", "Assessment 03", "Total");
+    System.out.printf("+----------------------------------+---------------------------+-----------------+-----------------+-----------------+-----------------+---------+%n");
+  
     for(Student s: students){
         if(s.total < threshold){
-            System.out.printf(s.lastName , s.firstName , s.studentID , s.A1,s.A2,s.A3,s.total);
+            System.out.printf("| %-30s | %-20s | %-15s | %-15.2f | %-15.2f | %-15.2f | %-7.2f |%n", s.lastName , s.firstName , s.studentID , s.A1,s.A2,s.A3,s.total);
         }
     }
     
