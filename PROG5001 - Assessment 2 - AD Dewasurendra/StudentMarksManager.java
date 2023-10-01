@@ -114,20 +114,24 @@ public class StudentMarksManager{
         }
     }
     
-    public void printTopAndBottomStudents(){
-        
-        
+       public void printTopAndBottomStudents() {
+    
         sortStudents();
-        
+
+        System.out.println(" students with the highest total marks");
+        System.out.printf("| %-32s | %-25s | %-15s | %-15s | %-15s | %-15s | %-7s |%n", "Last Name", "First Name", "Student ID", "Assessment 01", "Assessment 02", "Assessment 03", "Total");
+        System.out.printf("+----------------------------------+---------------------------+-----------------+-----------------+-----------------+-----------------+---------+%n");
         for (int i = students.size() - 1; i >= students.size() - 5; i--) {
-            System.out.printf(students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
+            System.out.printf("| %-32s | %-25s | %-15s | %-15.2f | %-15.2f | %-15.2f | %-7.2f |%n", students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
         }
-    
+
+        
+        System.out.println("\nBottom 5 students (Lowest total marks);");
+        System.out.printf("| %-32s | %-25s | %-15s | %-15s | %-15s | %-15s | %-7s |%n", "Last Name", "First Name", "Student ID", "Assessment 01", "Assessment 02", "Assessment 03", "Total");
+        System.out.printf("+----------------------------------+---------------------------+-----------------+-----------------+-----------------+-----------------+---------+%n");
         for (int i = 0; i < 5; i++) {
-            System.out.printf( students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
+            System.out.printf("| %-32s | %-25s | %-15s | %-15.2f | %-15.2f | %-15.2f | %-7.2f |%n", students.get(i).lastName, students.get(i).firstName, students.get(i).studentID, students.get(i).A1, students.get(i).A2, students.get(i).A3, students.get(i).total);
         }
-    
-    
     }
     
     public static void main(String[] args) throws IOException{
@@ -187,7 +191,7 @@ public class StudentMarksManager{
                             scanner.next();
                         }
                         Double threshold = scanner.nextDouble();
-                        if (threshold < 0 || threshold > 40) {
+                        if (threshold < 0 || threshold > 100) {
                             System.out.println("\nThe threshold must be in the range 0 - 30 !");
                             break;
                         }
